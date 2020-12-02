@@ -19,9 +19,7 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
-}
+const getRectangleArea = (width, height) => width * height;
 
 
 /**
@@ -35,9 +33,7 @@ function getRectangleArea(/* width, height */) {
  *   3.14 => 19.729201864543903
  *   0    => 0
  */
-function getCicleCircumference(/* radius */) {
-  throw new Error('Not implemented');
-}
+const getCicleCircumference = (radius) => (Math.PI * 2) * radius;
 
 /**
  * Returns an average of two given numbers.
@@ -51,9 +47,7 @@ function getCicleCircumference(/* radius */) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
-}
+const getAverage = (value1, value2) => (value1 + value2) / 2;
 
 /**
  * Returns a distance beetween two points by cartesian coordinates.
