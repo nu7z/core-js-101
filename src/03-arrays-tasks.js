@@ -367,9 +367,36 @@ const getPositivesCount = (arr) => {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
-}
+const sortDigitNamesByNumericOrder = (arr) => {
+  if (!arr.length) {
+    return [];
+  }
+  const obj = {
+    0: 'zero',
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+  };
+
+  const entries = Object.entries(obj);
+  return arr
+    .reduce((acc, item) => {
+      entries.forEach(([key, value]) => {
+        if (value === item) {
+          acc.push(+key);
+        }
+      });
+      return acc;
+    }, [])
+    .sort()
+    .map((item) => obj[item]);
+};
 
 /**
  * Returns the sum of all items in the specified array of numbers
@@ -487,7 +514,13 @@ function sortCitiesArray(/* arr */) {
  */
 function getIdentityMatrix(n) {
   return new Array(n)
-    .fill(1);
+    .fill([])
+    .map((arr) => {
+      arr.forEach((item, index) => {
+        console.log(item);
+        console.log(index);
+      });
+    });
 }
 
 /**
