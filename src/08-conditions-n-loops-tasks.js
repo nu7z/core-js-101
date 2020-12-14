@@ -309,8 +309,8 @@ const getDigitalRoot = (num) => {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-const isBracketsBalanced = (str) => {
-  const obj = {
+const isBracketsBalanced = (/* str */) => {
+  /* const obj = {
     '[': ']',
     '{': '}',
     '(': ')',
@@ -326,6 +326,8 @@ const isBracketsBalanced = (str) => {
   if (!!indexValue && str.includes(values[indexValue])) {
     str = str.replace(values[indexValue], '');
   }
+  */
+  throw new Error('Not implemented');
 };
 
 

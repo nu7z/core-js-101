@@ -512,8 +512,8 @@ function sortCitiesArray(/* arr */) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(n) {
-  return new Array(n)
+function getIdentityMatrix(/* n */) {
+  /* return new Array(n)
     .fill([])
     .map((arr) => {
       arr.forEach((item, index) => {
@@ -521,6 +521,8 @@ function getIdentityMatrix(n) {
         console.log(index);
       });
     });
+  */
+  throw new Error('Not implemented');
 }
 
 /**
