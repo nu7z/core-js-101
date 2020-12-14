@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable for-direction */
 /* *************************************************************************************************
  *                                                                                                *
  * Plese read the following tutorial before implementing tasks:                                   *
@@ -27,9 +29,15 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
-}
+const getFizzBuzz = (num) => {
+  let result = '';
+  const fizz = num % 3 === 0;
+  const buzz = num % 5 === 0;
+  const resultFizz = fizz ? 'Fizz' : '';
+  const resultBuzz = buzz ? 'Buzz' : '';
+  result = `${resultFizz}${resultBuzz}` || num;
+  return result;
+};
 
 
 /**
@@ -43,9 +51,12 @@ function getFizzBuzz(/* num */) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
-}
+const getFactorial = (n) => {
+  if (n <= 1) {
+    return 1;
+  }
+  return n * getFactorial(n - 1);
+};
 
 
 /**
@@ -60,9 +71,13 @@ function getFactorial(/* n */) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
-}
+const getSumBetweenNumbers = (n1, n2) => {
+  let summary = 0;
+  for (let i = n1; i <= n2; i += 1) {
+    summary += i;
+  }
+  return summary;
+};
 
 
 /**
@@ -80,9 +95,7 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
-}
+const isTriangle = (a, b, c) => a + b > c && a + c > b && b + c > a;
 
 
 /**
@@ -208,9 +221,7 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
-}
+const reverseString = (str) => str.split('').reverse().join('');
 
 
 /**
@@ -225,9 +236,7 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
-}
+const reverseInteger = (num) => Number(String(num).split('').reverse().join(''));
 
 
 /**
@@ -268,9 +277,15 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
-}
+const getDigitalRoot = (num) => {
+  const arr = String(num).split('');
+  return arr.reduce((acc, item) => {
+    // eslint-disable-next-line no-param-reassign
+    acc += +item;
+    if (String(acc).length === 1) return acc;
+    return getDigitalRoot(acc);
+  }, 0);
+};
 
 
 /**
@@ -294,9 +309,24 @@ function getDigitalRoot(/* num */) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
-}
+const isBracketsBalanced = (str) => {
+  const obj = {
+    '[': ']',
+    '{': '}',
+    '(': ')',
+    '<': '>',
+  };
+  let indexValue = null;
+  const keys = Object.keys(obj);
+  const values = Object.values(obj);
+  if (keys.includes(str[0])) {
+    str = str.replace(str[0], '');
+    indexValue = str.indexOf(values[str[0]]);
+  }
+  if (!!indexValue && str.includes(values[indexValue])) {
+    str = str.replace(values[indexValue], '');
+  }
+};
 
 
 /**
@@ -336,9 +366,11 @@ function toNaryString(/* num, n */) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
-}
+const getCommonDirectoryPath = (pathes) => {
+  const res = pathes
+    .map((item) => item.split('/'));
+  return res;
+};
 
 
 /**

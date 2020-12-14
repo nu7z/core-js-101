@@ -80,9 +80,7 @@ function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
-}
+const getLinearEquationRoot = (a, b) => -(b / a);
 
 
 /**
@@ -119,9 +117,10 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
-}
+const getLastDigit = (value) => {
+  const strValue = String(value);
+  return +strValue[strValue.length - 1];
+};
 
 
 /**
@@ -135,9 +134,7 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
-}
+const parseNumberFromString = (value) => +value;
 
 /**
  * Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
@@ -152,9 +149,18 @@ function parseNumberFromString(/* value */) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelipidedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
-}
+const getParallelipidedDiagonal = (...arr) => {
+  let summary = 0;
+  arr
+    .forEach((item) => {
+      if (item === 1) {
+        summary += item;
+      } else {
+        summary += (item ** 2);
+      }
+    });
+  return Math.sqrt(summary);
+};
 
 /**
  * Returns the number rounded to specified power of 10.
@@ -173,9 +179,13 @@ function getParallelipidedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
-}
+const roundToPowerOfTen = (num, pow) => {
+  if (pow === 0) return num;
+  const arrNum = String(num).split('');
+  const numberPoint = arrNum.length - pow;
+  arrNum.splice(numberPoint, 0, '.');
+  return Math.round(+arrNum.join('')) * (10 ** pow);
+};
 
 /**
  * Returns true is the number is prime; otherwise false.
@@ -213,9 +223,13 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
-}
+const toNumber = (value, def) => {
+  if (Number.isNaN(+value)) {
+    return def;
+  }
+  return +value;
+};
+
 
 module.exports = {
   getRectangleArea,
