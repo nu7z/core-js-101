@@ -490,9 +490,12 @@ const toStringList = (arr) => arr.join(',');
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
-}
+const sortCitiesArray = (arr) => arr.sort((a, b) => {
+  if (a.country > b.country) {
+    return 1;
+  }
+  return -1;
+});
 
 /**
  * Creates an indentity matrix of the specified size
@@ -512,18 +515,25 @@ function sortCitiesArray(/* arr */) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  /* return new Array(n)
-    .fill([])
-    .map((arr) => {
-      arr.forEach((item, index) => {
-        console.log(item);
-        console.log(index);
-      });
-    });
-  */
-  throw new Error('Not implemented');
-}
+const getIdentityMatrix = (n) => {
+  const iter = (result = [], count = 0) => {
+    if (count === n) {
+      return result;
+    }
+    const item = [];
+    for (let i = 0; i < n; i += 1) {
+      if (i === count) {
+        item.push(1);
+      } else {
+        item.push(0);
+      }
+    }
+    result.push(item);
+    count += 1;
+    return iter(result, count);
+  };
+  return iter();
+};
 
 /**
  * Creates an array of integers from the specified start to end (inclusive)
