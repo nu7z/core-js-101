@@ -267,7 +267,7 @@ const encodeToRot13 = (str) => {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-const isString = (value) => typeof value.charAt(0) === 'string';
+const isString = (value) => !!value && typeof value.valueOf() === 'string';
 
 
 /**
